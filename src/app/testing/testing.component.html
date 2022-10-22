@@ -1,1 +1,15 @@
-<p>testing works!</p>
+<div fxLayout="row" fxLayoutAlign="start stretch" class="child">
+  <div fxLayout="column" fxLayoutAlign="start stretch">
+    <h2>Child Component</h2>
+    <p>Today's drink: <strong>{{ drinks }}</strong></p>
+    <!-- <label for="drink-input">Add a drink : </label> -->
+
+    <mat-label for="drink-input">Add a drink : </mat-label>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input type="text" matInput placeholder="Ex. Pizza" value="Tea" id="drink-input" #newDrink>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addNewDrink(newDrink.value)">Add</button>
+    </div>
+  </div>
+</div>

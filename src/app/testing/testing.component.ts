@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-testing',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestingComponent implements OnInit {
 
+  @Input() drinks = "tea";
+  @Output() newDrinkEvent = new EventEmitter<string>(); 
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  addNewDrink(value: string){
+    console.log("Drink to be served :",value)
+    this.newDrinkEvent.emit(value);
+
+  }
 }
