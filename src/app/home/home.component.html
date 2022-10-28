@@ -1,4 +1,5 @@
-<!-- <div fxLayout="row" fxLayoutAlign="center center" class="parent">
+<!-- <router-outlet></router-outlet> -->
+<div fxLayout="row" fxLayoutAlign="center center" class="parent">
   <div fxLayout="column" fxLayoutAlign="start stretch">
     <h2>Parent Component</h2>
     <ul>
@@ -7,7 +8,6 @@
       </li>
     </ul>
     <app-testing [drinks]="currentDrink" (newDrinkEvent)="addDrink($event)"></app-testing>
-
+    <!-- <router-outlet [drinks]="currentDrink" (newDrinkEvent)="addDrink($event)"></router-outlet> -->
   </div>
-</div> -->
-<router-outlet></router-outlet>
+</div>

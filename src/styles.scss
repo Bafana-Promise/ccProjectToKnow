@@ -3,7 +3,33 @@
 html, body { 
     font-family: Arial, Helvetica, sans-serif;
     // height: 100%;
-    max-width: 960px;
-    margin: auto; 
+    // max-width: 960px;
+    // margin: auto; 
 }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.pointer{
+    cursor: pointer;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.pointer{
+    cursor: pointer;
+}
+
+*::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  /* Track */
+  *::-webkit-scrollbar-track {
+    background: grey;
+  }
+  /* Handle */
+  *::-webkit-scrollbar-thumb {
+    background:  rgb(94, 82, 82);
+  }
+  /* Handle on hover */
+  *::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+  }

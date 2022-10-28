@@ -12,8 +12,7 @@ export class TestingComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   addNewDrink(value: string){
     console.log("Drink to be served :",value)

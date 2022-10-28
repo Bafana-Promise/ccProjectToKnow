@@ -1,0 +1,175 @@
+<!-- <p>login-reg works!</p> -->
+
+<div class="maincontainer baseColor" fxLayout="column" fxLayoutAlign="center center" fxFill *ngIf="!showLogReg">
+    <h1>Learning How To Share Data ( Input & Output )</h1>
+    <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
+        <div fxLayout="column" fxLayoutAlign="space-evenly center" fxFlex="50">
+            <img src="assets/images/login.png" alt="" class="height400px" />
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="50" class="bg-white width30em height400px">
+            <h1 class="bold">LOGIN</h1>
+            <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
+                <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="80">
+                    <form [formGroup]="login" class="fullwidth">
+                        <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Username</mat-label>
+                                    <input matInput placeholder="Username" type="email" formControlName="username" />
+                                    <mat-error
+                                        *ngIf="(login.controls.username.errors?.['required']) && (login.controls.username.touched)">
+                                        Username is required</mat-error>
+                                    <mat-error
+                                        *ngIf="(login.controls.username.errors?.['email']) && (login.controls.username.touched)">
+                                        Invalid Username</mat-error>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Passowrd</mat-label>
+                                    <input matInput placeholder="Passowrd" type="password" formControlName="password" />
+                                    <mat-error
+                                        *ngIf="(login.controls.password.errors?.['required']) && (login.controls.password.touched)">
+                                        Password is required</mat-error>
+                                    <mat-error
+                                        *ngIf="(login.controls.password.errors?.['minlength']) && (login.controls.password.touched)">
+                                        Mininmum Length is 3 </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="submitBtnWidth" fxLayoutGap="12px">
+                <div class="signInRe">Not a User .? <span class="pointer logRegTextColor"
+                        (click)="showLogReg = !showLogReg">Register</span></div>
+                <button mat-raised-button class="blueBtn" (click)="onSubmit()" [disabled]="login.invalid">
+                    Login
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="maincontainer baseColor full-height" fxLayout="column" fxLayoutAlign="start center" *ngIf="showLogReg">
+    <h1 class="bold margintop1em">REGISTER</h1>
+    <h1>EXPENSE MANAGEMENT</h1>
+    <h1>REGISTER NEW USERS</h1>
+
+    <div class="bg-white regHeight" fxLayout="row" fxLayoutAlign="center center" fxFlex="75">
+        <div fxLayout="column" fxLayoutAlign="space-evenly center" class="width37em" fxFlex="80">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <div fxLayout="column" fxLayoutAlign="space-evenly center" class="margintop1em">
+                    <form [formGroup]="registerForm" class="fullwidth">
+                        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="3em">
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput placeholder="First Name" type="type" formControlName="firstName" />
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.firstName.errors?.['required']) && (registerForm.controls.firstName.touched)">
+                                        First Name is required</mat-error>
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.firstName.errors?.['pattern']) && (registerForm.controls.firstName.touched)">
+                                        First Name Should Contain Letters Only </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput placeholder="Last Name" type="type" formControlName="lastName" />
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.lastName.errors?.['required']) && (registerForm.controls.lastName.touched)">
+                                        Last Name is required</mat-error>
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.lastName.errors?.['pattern']) && (registerForm.controls.lastName.touched)">
+                                        Last Name Should Contain Letters Only </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="3em">
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="46" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Date Of Birth</mat-label>
+                                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.dateOfBirth.errors?.['required']) && (registerForm.controls.dateOfBirth.touched)">
+                                        Date Of Birth is required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Company Name</mat-label>
+                                    <input matInput placeholder="Company Name" type="text"
+                                        formControlName="companyName" />
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.companyName.errors?.['required']) && (registerForm.controls.companyName.touched)">
+                                        Company Name is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="3em">
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput placeholder="email" type="email" formControlName="email" />
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.email.errors?.['required']) && (registerForm.controls.email.touched)">
+                                        Email is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput placeholder="Password" type="password" formControlName="password" />
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.password.errors?.['required']) && (registerForm.controls.password.touched)">
+                                        Password is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="3em">
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Confirm Password</mat-label>
+                                    <input matInput placeholder="Confirm Password" type="password"
+                                        formControlName="confirmPassword" />
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.password.errors?.['required']) && (registerForm.controls.password.touched)">
+                                        Password is required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="marginBottom1em">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Role</mat-label>
+                                    <input matInput placeholder="User Role*" type="text" formControlName="role" />
+                                    <mat-error
+                                        *ngIf="(registerForm.controls.password.errors?.['required']) && (registerForm.controls.password.touched)">
+                                        Password is required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="submitBtnWidth" fxLayoutGap="12px">
+                <div>Already a User.? <span class="pointer logRegTextColor" (click)="showLogReg = !showLogReg">Login</span></div>
+                <button mat-raised-button class="blueBtn" (click)="onSubmitReg()" [disabled]="registerForm.invalid">
+                    Register
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
